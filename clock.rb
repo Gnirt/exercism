@@ -10,7 +10,10 @@ class Clock
   end
 
   def to_s
-    time_transformation
+    result = "#{to_two_digit(hour)}:#{to_two_digit(minute)}"
+    return '00:00' if result == '24:00'
+
+    result
   end
 
   def minute_transformation(number)
@@ -28,15 +31,6 @@ class Clock
 
   def to_two_digit(number)
     number.to_s.rjust(2, '0')
-  end
-
-  def time_transformation
-    result = "#{to_two_digit(hour)}:#{to_two_digit(minute)}"
-    if result == '24:00'
-      '00:00'
-    else
-      result
-    end
   end
 
   def +(other)
