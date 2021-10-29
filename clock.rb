@@ -43,4 +43,10 @@ class Clock
     total_hour = hour + other.hour
     Clock.new(hour: total_hour, minute: total_minute)
   end
+
+  def -(other)
+    total_minute = minute - other.minute
+    total_hour = hour - other.hour
+    Clock.new(hour: total_hour, minute: total_minute)
+  end
 end
