@@ -22,9 +22,9 @@ class Clock
   end
 
   def hour_transformation
-    modulo = @hour % 24
+    hour_with_minute = @hour + minute_to_hour
+    modulo = hour_with_minute % 24
 
-    modulo += minute_to_hour
     modulo.to_s.rjust(2, '0')
   end
 
