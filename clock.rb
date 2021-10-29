@@ -8,7 +8,6 @@ class Clock
     @minute = minute
   end
 
-  # use '%.2d' % '3'
   def to_s
     result = "#{hour_transformation(@hour)}:#{minute_transformation(@minute)}"
 
@@ -20,7 +19,8 @@ class Clock
   end
 
   def hour_transformation(number)
-    number.to_s.rjust(2, '0')
+    modulo = number % 24
+    modulo.to_s.rjust(2, '0')
   end
 
   def time_transformation(result)
