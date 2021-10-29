@@ -9,21 +9,20 @@ class Clock
   end
 
   def to_s
-    result = "#{hour_transformation(@hour)}:#{minute_transformation(@minute)}"
-
-    time_transformation(result)
+    time_transformation
   end
 
-  def minute_transformation(number)
-    number.to_s.rjust(2, '0')
+  def minute_transformation
+    @minute.to_s.rjust(2, '0')
   end
 
-  def hour_transformation(number)
-    modulo = number % 24
+  def hour_transformation
+    modulo = @hour % 24
     modulo.to_s.rjust(2, '0')
   end
 
-  def time_transformation(result)
+  def time_transformation
+    result = "#{hour_transformation}:#{minute_transformation}"
     if result == '24:00'
       '00:00'
     else
