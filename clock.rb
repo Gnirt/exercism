@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Tic toc...
 class Clock
 
   def initialize(hour: nil, minute: nil)
@@ -7,7 +8,6 @@ class Clock
     @minute = minute
   end
 
-  # use '3'.rjust(2, '0')
   # use '%.2d' % '3'
   def to_s
     result = "#{hour_transformation(@hour)}:#{minute_transformation(@minute)}"
@@ -16,23 +16,11 @@ class Clock
   end
 
   def minute_transformation(number)
-    if number.to_s.length == 1
-      "0#{number}"
-    elsif number.to_s.length == 0
-      '00'
-    else
-      number
-    end
+    number.to_s.rjust(2, '0')
   end
 
   def hour_transformation(number)
-    if number.to_s.length == 1
-      "0#{number}"
-    elsif number.to_s.length == 0
-      '00'
-    else
-      number
-    end
+    number.to_s.rjust(2, '0')
   end
 
   def time_transformation(result)
