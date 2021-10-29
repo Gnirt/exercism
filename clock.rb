@@ -3,7 +3,7 @@
 # Tic toc...
 class Clock
 
-  def initialize(hour: nil, minute: nil)
+  def initialize(hour: nil, minute: 0)
     @hour = hour
     @minute = minute
   end
@@ -13,11 +13,18 @@ class Clock
   end
 
   def minute_transformation
-    @minute.to_s.rjust(2, '0')
+    modulo = @minute % 60
+    modulo.to_s.rjust(2, '0')
+  end
+
+  def minute_to_hour
+    @minute / 60
   end
 
   def hour_transformation
     modulo = @hour % 24
+
+    modulo += minute_to_hour
     modulo.to_s.rjust(2, '0')
   end
 
