@@ -5,32 +5,33 @@ class Clock
   attr_reader :minute, :hour
 
   def initialize(hour: 0, minute: 0)
-    @hour = hour
-    @minute = minute
+    @hour = hour_transformation(hour, minute)
+    @minute = minute_transformation(minute)
   end
 
   def to_s
     time_transformation
   end
 
-  def minute_transformation
-    modulo = @minute % 60
-    modulo.to_s.rjust(2, '0')
+  def minute_transformation(number)
+    number % 60
   end
 
-  def minute_to_hour
-    @minute / 60
+  def minute_to_hour(number)
+    number / 60
   end
 
-  def hour_transformation
-    hour_with_minute = @hour + minute_to_hour
-    modulo = hour_with_minute % 24
+  def hour_transformation(number, minute)
+    hour_with_minute = number + minute_to_hour(minute)
+    hour_with_minute % 24
+  end
 
-    modulo.to_s.rjust(2, '0')
+  def to_two_digit(number)
+    number.to_s.rjust(2, '0')
   end
 
   def time_transformation
-    result = "#{hour_transformation}:#{minute_transformation}"
+    result = "#{to_two_digit(hour)}:#{to_two_digit(minute)}"
     if result == '24:00'
       '00:00'
     else
