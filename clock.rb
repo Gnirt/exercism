@@ -3,7 +3,7 @@
 # Tic toc...
 class Clock
 
-  def initialize(hour: nil, minute: 0)
+  def initialize(hour: 0, minute: 0)
     @hour = hour
     @minute = minute
   end
