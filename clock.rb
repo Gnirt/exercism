@@ -2,6 +2,7 @@
 
 # Tic toc...
 class Clock
+  attr_reader :minute, :hour
 
   def initialize(hour: 0, minute: 0)
     @hour = hour
@@ -35,5 +36,11 @@ class Clock
     else
       result
     end
+  end
+
+  def +(other)
+    total_minute = minute + other.minute
+    total_hour = hour + other.hour
+    Clock.new(hour: total_hour, minute: total_minute)
   end
 end
