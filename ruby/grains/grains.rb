@@ -9,12 +9,11 @@ class Grains
   def self.square(square_number)
     raise ArgumentError if square_number > 64 || square_number < 1
     
-    (square_number - 1).times.inject(1) do |grains, _|
-      grains = grains * 2
-    end
+    2 ** (square_number - 1)
   end
 
   def self.total
+    # (2**64) - 1
     18_446_744_073_709_551_615
   end
 end
